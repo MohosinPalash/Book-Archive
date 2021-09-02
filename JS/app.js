@@ -1,31 +1,26 @@
-
 // Search Button Listener
 const searchButton = document.getElementById('search-button').addEventListener("click", function () {
     const searchText = document.getElementById('search-text').value;
     document.getElementById("books-list").innerHTML = "";
-    // const ingredientDiv = document.getElementById('ingredient-div');
-    // ingredientDiv.style.display = "none";
+
     const booksDiv = document.getElementById('books-list');
     booksDiv.style.display = "grid";
+
+    //Fetching OpenLibrary API
     const url = `https://openlibrary.org/search.json?q=${searchText}`
-    //const coverUrl = `https://covers.openlibrary.org/b/id/55410-M.jpg`
-    // const url1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchText}`
     fetch(url)
         .then(res => res.json())
         .then(data => showBookInfo(data.docs, data.numFound));
-    // .then(data => console.log(data.docs.length));
 });
 
 
-// Show meal in the meal div
+// Show Book information Function
 const showBookInfo = (books, noOfResult) => {
 
     const booksDiv = document.getElementById('books-list');
     const messageDiv = document.getElementById('message');
-    // const div = document.createElement('div');
-    // let booksInfo = "";
 
-
+    //No result OR No of result message
     if (books.length === 0) {
         messageDiv.textContent = "";
         const p = document.createElement('p');
@@ -38,17 +33,18 @@ const showBookInfo = (books, noOfResult) => {
         messageDiv.appendChild(p);
     }
 
+    //HTML Code generation
     books.forEach(book => {
         const div = document.createElement('div');
         div.innerHTML = `
                 <div class="book">
                     <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" alt="">
-                    <h6>Title: ${book.title}</h6>
-                    <h6>FPY: ${book.first_publish_year}</h6>
+                    <p class="mt-3"><strong>Title: </strong>${book.title}</p>
+                    <p><strong>First Publish Year: </strong>${book.first_publish_year}</p>
+                    <p><strong>Authors: </strong>${book.author_name}</p>
+                    <p><strong>Publishers: </strong>${book.publisher}</p>
                 </div> 
         `
         booksDiv.appendChild(div);
     })
 }
-
-// THE END
