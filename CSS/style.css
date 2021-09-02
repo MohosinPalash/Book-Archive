@@ -1,0 +1,46 @@
+/* Players list grid start here */
+#books-list{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 10px 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    margin-top: 20px;
+}
+
+/* Player list customization */
+#books-list div{
+    padding: 2%;
+    margin: 3%;
+    border-radius:10px;
+    height: 97%;
+    background-color: coral;
+    color: white;
+    box-shadow:  0px 7px 29px 0px rgba(226, 195, 166, 0.521);
+}
+/* Image set up */
+.book img{
+    width: 100%;
+    height: 50%;
+    border-radius:10px;
+}
+/* Players list grid start here */
+
+
+/* Responsive customization for tablet */
+@media (max-width: 992px){
+
+    #books-list{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive customization for mobile phone */
+@media (max-width: 668px){
+    #books-list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
