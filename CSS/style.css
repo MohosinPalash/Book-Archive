@@ -1,3 +1,9 @@
+
+body{
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+}
+
 /* Players list grid start here */
 #books-list{
     display: grid;
@@ -26,6 +32,14 @@
     border-radius:10px;
 }
 /* Players list grid start here */
+
+
+
+#message{
+    text-align: center;
+    font-size: 20px;
+    color: orangered;
+}
 
 
 /* Responsive customization for tablet */
